@@ -1,0 +1,2 @@
+driver.close() -- closes current browser
+driver.quit() -- closes all browsers opened by selenium

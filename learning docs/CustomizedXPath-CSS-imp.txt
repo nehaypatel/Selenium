@@ -1,0 +1,116 @@
+LOCATOR TECHNIQUES:
+One of the important differences between XPath and CSS is, with XPath we can search elements backward or forward in the DOM hierarchy while CSS works only in a forward direction. This means that with XPath we can locate a parent element using a child element BUT NOT IN CSS.
+
+CSS Selectors are more faster. Syntax are more simple.
+Class under Class can be identified by CSS only. eg. an element that has a class is inside anothe element inside another class
+
+1. X Path means - the path of the specific element on the web page starting from html tag, it should traverse n reach to this particular tag in your html code
+OR X Path is how we traverse through nodes to reach a specific point
+Using XPath as a Locator. Xpath is used to locate a web element based on its XML path.
+
+2. <input type="email" class="inputtext" name="email" id="email" data-testid="royal_email">
+in above code--
+TAG- input is a tag
+ATTRIBUTE- type, class, name etcetc
+VALUE- email, inouttext, email etc etc
+
+
+3. TO Write an XPath on your own, 
+
+//tagName[@attribute='value']
+
+so, in above html code, we can write xpath as
+
+//input[@id='email'] -- this is relative xpath
+
+b.findElement(By.xpath("//input[@id='email']")).sendKeys("voila!");
+
+4. //*[@id='email'] -- this is relative xpath
+in above code, it will look for any tag that has id as email
+
+generally when you right click on browser n get xpath, it may give *
+
+5. formula for css
+tagName[attribute='value']
+
+6.  [@id='email']
+in above code, it will look for any tag that has id as email
+
+7. another formula for css
+tagName#id -- this will only work for tags that have id attributes
+input#email
+
+8. another formula for scc
+tagname.classname -- this will only work if html code has class name
+input.inputtext
+
+
+9. sometimes there is only 1 attribute which too is alphanumeric
+OR if the attribute value is too long
+
+REGULAR EXPRESSION SYNTAX FOR XPATH
+- we can identify by xpath
+//tagName[@contains(@attribute,'value')]
+
+<input type="password" class="inputtext _55r1 inputtext _1kbt _4rer inputtext _1kbt">
+so for above code, we will write following xpath--
+//input[@contains(@class,'inputtext')]
+
+startswith()-- Starting with: For example, if the ID of an element is ctrl_12, this will locate and return elements with ctrl at the beginning of the ID.	
+input[starts-with(@id,'ctrl')]
+
+endswith()-- Ending with: For example, if the ID of an element is a_1_userName, this will locate and return elements with _userName at the end of the ID.	
+input[ends-with(@id,'_userName')]
+
+
+10. REGULAR EXPRESSION SYNTAX FOR CSS we can identify by css
+tagName[Attribute*='value']-- CONTAINING For ex, if the class of an element is panel_login_userName_textfield, this will use the userName part in the middle to match and locate the element.
+input[class*='inputtext']
+
+tagName[Attribute#='value'] -- ENDING WITH For example, if the ID for an element is a_1_userName, this will locate and return elements with _userName at the end of the ID.
+
+
+tagName[Attribute^='value']-- STARTING WITH For example, if the ID of an element is ctrl_12, this will locate and return elements with ctrl at the beginning of the ID.
+input[id^='ctrl']
+
+11. Write XPAth using Parent-Child relationship --ABSOLUTE XPATH
+This is applicable when there are NO unique or static attributes,
+- First define Xpath for the parent and then Traverse the tagnames of the child
+b.findElement(By.xpath("//td[@class='login_form_label_field']/div/a")).click(); //xpath with parent-child when no unique identifiers
+- In case we have multiple tags inside another tag- to traverse to the particular child, you out its postion [2] or [3]
+findElement(By.xpath("//td[@class='login_form_label_field']/div[3]/a")).click();
+
+
+12. RELATIVE XPATH
+When we get to a xpath without refering to parent tag/node, it is called a relative xpath
+
+13. ABSOLUTE XPATH
+When we get to a xpath via parent tags it is absolute xpath
+
+RELATIVE XPATH is more preferred. as in absolute if any change in code with one of the elements in the path, could brake our XPath
+
+14. FOLLOWING-SIBLINGS in XPATH
+ASSUME  a <ul> has dynamic class
+there are 4-5 <li> tags inside.
+only one tag is static n rest are dynamic, then we will reach the path of static <li> and then add following-sibling code with 2 ::
+/following-sibling::li[3]
+a.findElement(By.xpath("//*[@id='tablist1-tab1']/following-sibling::li[3]")).click();
+
+15. FOLLOWING-SIBLINGS in CSS SELECTOR
+a.findElement(By.cssSelector("li[id=tablist1-tab1]+li+li")).click(); 
+
+16. XPATH- FROM CHILD TRAVERSE BACK TO PARENT
+a.findElement(By.xpath("//*[@id='tablist1-tab1']parent::ul")).click();
+
+17. PRECEDING SIBLING IN XPATH
+a.findElement(By.xpath("//*[@id='tablist1-tab3']/preceding-sibling::li[1]")).click(); // to go to the previous sibling
+
+18. IDENTIFY ELEMENT BASED ON TEXT BASED ATTRIBUTE- if attributes are dynamic or if there are no attribute we may use text. 
+//*[text()= ' Sellenium ']
+you need to even give space that is there in the code around the text
+
+19. CSS different ways to write
+n.findElement(By.cssSelector("input[id='username']")).sendKeys("test");// css using tagname attribute and value
+n.findElement(By.cssSelector("[id='username']")).sendKeys("test");// css with only attribute and value
+n.findElement(By.cssSelector("#username")).sendKeys("test");// css with only value which is an id (for id we put #)
+n.findElement(By.cssSelector(".button.r4.wide.primary")).click(); // css with only value which is a class (for class we put .)

@@ -1,0 +1,52 @@
+- webdriver is an interface and it gives all the methods to automate
+selenium webdriver
+
+SELENIUM IS NO TOOL. ITS JUST A JAR FILE
+--------------
+
+1 DOWNLOAD JAVA
+
+2 CONFIGURE JAVA VARIABLES
+
+ECLIPSE IS THE JAVA EDITOR FOR WRITING SELLENIUM SCRIPTS
+
+3 DOWNLOAD ECLIPSE
+
+4 IN ECLIPE- CREATE A JAVA PROJECT -- IT IS A TEST SUITE TO SAVE TEST SCRIPTS
+
+5 IN ECLIPSE CREATE A java class file is a selenium test case
+
+6 SELENIUM JARS DOWNLOAD - from selenium website and save on server
+
+7. IN ECLIPSE- right click on project name - Properties - Java Buld Path- Libraries - Add External Jars - add all jars downloaded
+
+8. first code- invoke browser
+
+- install exe from Third Party Browser Drivers NOT DEVELOPED by seleniumhq (https://www.seleniumhq.org/download/WebDriver driver = new ChromeDriver();)
+- extract exe into your local folder in drivers
+
+- On ECLIPSE give a SetProperty command
+- System.setProperty("webdriver.chrome.driver", "E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+- note: always put; in end. All parameteres in "". and put \\ because java recognizes \\ adn not \
+
+- to setup a chrome browser
+--import both the webdriver and chrome driver
+- go to selenium dowload page again and click on java docs (https://seleniumhq.github.io/selenium/docs/api/java/index.html)
+- here u get all the classes. go to webdriver class
+- in ECLIPSE, PUT FOLLOWING CODE
+WebDriver driver = new ChromeDriver();
+- CLICK ON WebDriver and ChromeDriver to import the class
+- NOW, write code
+driver.get("https://www.google.com/");
+This will invode chrome and google on chrome
+
+WebDriver driver = new ChromeDriver();
+		driver.get("https://www.google.com/");
+		System.out.println(driver.getTitle());
+
+- to print something on the eclipse output use system println
+System.out.println();
+
+
+8. 
+

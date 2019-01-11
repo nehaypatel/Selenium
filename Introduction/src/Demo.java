@@ -1,0 +1,22 @@
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Demo {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+	WebDriver a = new ChromeDriver();
+	
+		a.get("https://www.google.com/");
+		System.out.println(a.getTitle());
+		System.out.println(a.getCurrentUrl());
+		//System.out.println(a.getPageSource());
+		a.get("https://www.cnn.com");
+		a.navigate().back();
+//a.close();-- closes current browser
+		a.quit();
+	}
+
+}

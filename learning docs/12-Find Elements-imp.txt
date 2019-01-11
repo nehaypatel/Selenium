@@ -1,0 +1,35 @@
+Section 6
+How to handle edit box?
+-Find Elements
+Locator Techniques :
+
+Xpath
+ID
+ClassName
+Name
+linkText
+CssSelector
+Partial link text
+
+1. every object may not have ID or className. Thats when XPath and CSS are preferred
+2. IF id is alpha numeric- it will keep changing everytime u refresh page
+3. Confirm link object with anchor tag <a> - use linkText in this case
+4. COMPUND CLASS cannot be accepted. Class Should NOT have spaces - thats when we use XPath and CSS
+5. if there ae multiple object with same identifier example class="inputtext" 
+- in this case if we write findElement code, it will identify first element from top left.
+6. You can generate XPath from browser developer tools. But those are not 100% reliable. - right click on the line of code, copy --> xpath- FIREFOX DOESNOT GIVE GOOD XPATH ON RIGHT CLICK. use chrome to get the xpath
+7. for finding css selector, CHROME does NOT  help in finding css selector on right click. on chrome, u fond it on toolbar. USE FIREFOX browser to get the CSS SElctor
+7. you should be able to generate own XPath or CSS by seeing the html code on your own
+8. java does NOT accept "" inside "" u can have single quote inside double quote.
+8. XPath can be defined in a number of ways
+9. to validate an x path or css on any browser:
+go to console tab
+For XPath: type $x("")--- and then ur path inside this in single quote.
+When you hit enter, it console window will give a result. putting ur mouse over that result will highlight that object on the browser
+For CSS: type $("")--- and then ur path inside this in single quote.
+When you hit enter, it console window will give a result. putting ur mouse over that result will highlight that object on the browser
+
+10. Following are ACTIONS: 
+getText()
+.click();
+.sendKeys("test");

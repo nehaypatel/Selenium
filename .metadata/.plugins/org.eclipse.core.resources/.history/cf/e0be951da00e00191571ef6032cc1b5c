@@ -1,0 +1,12 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class CSSSelectors {
+	public static void main(String[] args) {
+	WebDriver n = new FirefoxDriver();
+n.get("https://login.salesforce.com/");
+
+
+	}
+
+}

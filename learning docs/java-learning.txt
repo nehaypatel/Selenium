@@ -1,0 +1,60 @@
+- the control and execution will always start from main method
+- public static void main-- is the heart of java
+- class is the file in which you will write java code
+- java class files are used to write the java code
+- execution is restricted to main block
+
+public class Basic1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	System.out.println("my first code");
+
+	}
+
+}
+
+2. Concatenation operator
+to get a string and a variable together, java uses concatenation opertator + to join them
+int x = 2;
+int y = 3;
+int z = x + y;
+System.out.println("Sum is" + z);
+
+
+3. to reuse a set of code accross differnet test scripts, java u can create objects
+
+OOPS SECTTION OF JAVA
+1. How to define reusable objects- How to define object in another class and call them
+i) We first create an object
+e.g. ReusableBlock
+
+public class ReusableBlock {
+
+public void ValidateHeader()
+{
+	System.out.println("Header links Validate");
+}
+
+}
+
+ii) Then we go to our page with the following syntax
+e.g basics1
+
+public class Basic1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+System.out.println("I navigated to Home Page");
+
+// add 2 and 3 output 5
+ReusableBlock r = new ReusableBlock();
+r.ValidateHeader();
+	}
+
+
+In above code--- new is a memory allocation operator
+you define a new opbject r and then u call the method defined in reusable object
+
+}
+

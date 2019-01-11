@@ -1,0 +1,20 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class RelativeAbsoluteXPath {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver a = new ChromeDriver();
+		a.get("http://www.qaclickacademy.com/");
+		//a.findElement(By.xpath("//nav[@class='navbar-collapse collapse']/ul/li[4]/a")).click();// this is an absolute xpath
+		a.findElement(By.xpath("//*[@id='tablist1-tab2']")).click();// this is relative path
+		//a.findElement(By.xpath("//*[@id='tablist1-tab1']/following-sibling::li")).click();// following Sibling using xpath
+	//a.findElement(By.cssSelector("li[id=tablist1-tab1]+li[3]")).click(); // following sibling using css selector
+	//a.findElement(By.xpath("//*[@id='tablist1-tab4]']/preceding-sibling::li[2]")).click();
+
+	}
+
+}
