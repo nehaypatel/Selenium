@@ -18,8 +18,7 @@ public class Loops {
 			b.findElement(By.xpath("//div[@class='uitk-grid step-input-outside gcw-component gcw-component-step-input gcw-step-input gcw-component-initialized']/div[4]/button")).click();
 		}
 		b.findElement(By.xpath("//footer[@class='menu-footer']/div/div[2]/button")).click();
-		
-		System.out.println(b.findElement(By.xpath("//button[@class='trigger-utility menu-trigger btn-utility btn-secondary dropdown-toggle theme-standard pin-left menu-arrow gcw-component gcw-traveler-amount-select gcw-component-initialized']/span/span[4]")).getText());
+		System.out.println(b.findElement(By.className("trigger-utility menu-trigger btn-utility btn-secondary dropdown-toggle theme-standard pin-left menu-arrow gcw-component gcw-traveler-amount-select gcw-component-initialized")).getText());
 		
 		/*
 		
