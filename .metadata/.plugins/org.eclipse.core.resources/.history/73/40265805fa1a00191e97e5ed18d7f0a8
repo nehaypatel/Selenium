@@ -1,0 +1,30 @@
+package Two;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+
+public class EndToEnd {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.flyfrontier.com/");
+		driver.manage().window().maximize();
+		System.out.println(driver.findElement(By.id("rbroundtrip")).getAttribute("checked"));
+		Assert.assertEquals(driver.findElement(By.id("rbroundtrip")).getAttribute("checked"), "true");
+		Thread.sleep(2000);
+		driver.findElement(By.id("kendoDepartFrom_input")).click();
+		for (int x=1; x<4; x++)
+		{
+		driver.findElement(By.id("kendoDepartFrom_listbox")).sendKeys(Keys.ARROW_DOWN);
+		
+		
+
+	}
+
+}

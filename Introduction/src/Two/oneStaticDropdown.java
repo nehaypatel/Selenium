@@ -19,7 +19,7 @@ public class oneStaticDropdown {
 		s.selectByIndex(5);
 		s.selectByVisibleText("Front Load Compactor");
 		Thread.sleep(2000L);// to keep wait synchronization in the code
-		a.close();
+		//a.close();
 		
 
 		

@@ -1,0 +1,54 @@
+1. Dropdown is handled using Select class (ch 23)
+different methods of using Select class
+- using value attribute
+-using index
+- using text
+- select multiple options
+-deselect
+Select s = new Select(a.findElement(By.cssSelector("[id='input_1_24']")));
+		s.selectByValue("Roll-Off");
+		s.selectByIndex(5);
+		s.selectByVisibleText("Front Load Compactor");
+
+2. handle java alerts
+driver.switchTo().alert().accept();// to click on ok
+driver.switchTo().alert().dismiss();
+
+3. Checkbox and Radio button
+isSelected()
+isEnabled()
+isDisabled()
+
+4. assert
+//TestNg is a framework used to assert if certain conditions are true or false
+Assert.assertTrue(b.findElement(By.cssSelector("[id*='flight-add-hotel']")).isSelected());
+Assert.assertFalse(b.findElement(By.cssSelector("[id*='flight-add-car']")).isSelected());
+Thread.sleep(2000);
+b.findElement(By.cssSelector("[id*='flight-add-hotel']")).click();
+
+if(b.findElement(By.cssSelector("#flight-returning-wrapper-flp")).isDisplayed())
+{
+	System.out.println("return date is displaying");
+	Assert.assertTrue(true);
+}
+else {
+	Assert.assertTrue(false);
+	
+}
+b.findElement(By.cssSelector("#flight-type-one-way-label-flp")).click();
+
+if(b.findElement(By.cssSelector("#flight-returning-wrapper-flp")).isDisplayed())
+{
+	
+	Assert.assertFalse(true);
+	
+}
+else {
+	Assert.assertFalse(false);
+	System.out.println("Not displayed now after one way");
+	
+}
+		
+	}
+
+}
