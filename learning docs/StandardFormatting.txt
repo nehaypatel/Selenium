@@ -1,0 +1,41 @@
+-To format Code in eclipse you do Ctrl+ Shift+ F
+
+CAMEL CASE STANDARD
+- A class should always start by Capital
+eg: public class Dynamic {
+
+- A variable should always be lowercase
+e.g WebDriver driver = new ChromeDriver();
+OR
+WebDriver rowCount = new ChromeDriver();
+
+- code to remove chrome notofication
+System.setProperty("webdriver.chrome.driver","E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("profile.default_content_setting_values.notifications", 2);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", p);
+		
+WebDriver driver = new ChromeDriver(options);
+
+- To have multiple methods in a class
+public static void main(String[] args) throws IOException, InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver","E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		 getScreenshot(driver);
+
+}
+
+  public static void getScreenshot(WebDriver driver) throws IOException
+  {
+	  
+	  driver.get("https://www.flyfrontier.com/");
+		File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(src, new File("E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\screenshot.png"));
+  }
+
+	
+}

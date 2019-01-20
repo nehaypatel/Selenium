@@ -1,0 +1,14 @@
+Chapter 67
+IMPLICIT WAIT
+- it is for throughtout all the CODE IN UR script
+-It keeps on listening to Dom even during the wait time
+- if the step is fulfilled before the wait time, it will move to next line of code 
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+EXPLICIT WAIT
+- It is for indivuadl CODE where we know the results could take time to load. case by case basis
+-It keeps on listening to Dom even during the wait time
+- if the step is fulfilled before the wait time, it will move to next line of code 
+
+Thread.Sleep- this is a java code
+it waits for the no of time asked to wait n then listen to the Dom

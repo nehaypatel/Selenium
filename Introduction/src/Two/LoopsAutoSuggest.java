@@ -1,90 +1,104 @@
 package Two;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class LoopsAutoSuggest {
+public class Loopsautosuggest {
 
-	public static void main(String[] args) throws InterruptedException  {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.gecko.driver", "E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\geckodriver.exe");
-		WebDriver b = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver",
+				"E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver b = new ChromeDriver();
+		b.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		b.get("https://www.expedia.com/");
 		b.manage().window().maximize();
 		b.findElement(By.id("primary-header-flight")).click();
 		b.findElement(By.id("traveler-selector-flp")).click();
-		for (int i=1; i<3; i++)
-		{
-			b.findElement(By.xpath("//div[@class='uitk-grid step-input-outside gcw-component gcw-component-step-input gcw-step-input gcw-component-initialized']/div[4]/button")).click();
+		for (int i = 1; i < 3; i++) {
+			b.findElement(By.xpath(
+					"//div[@class='uitk-grid step-input-outside gcw-component gcw-component-step-input gcw-step-input gcw-component-initialized']/div[4]/button"))
+					.click();
 		}
 		b.findElement(By.xpath("//footer[@class='menu-footer']/div/div[2]/button")).click();
-		
-		Assert.assertEquals(b.findElement(By.xpath("//button[@class='trigger-utility menu-trigger btn-utility btn-secondary dropdown-toggle theme-standard pin-left menu-arrow gcw-component gcw-traveler-amount-select gcw-component-initialized']/span/span[4]")).getText(), "3 Adults");
-		
-		System.out.println(b.findElement(By.xpath("//button[@class='trigger-utility menu-trigger btn-utility btn-secondary dropdown-toggle theme-standard pin-left menu-arrow gcw-component gcw-traveler-amount-select gcw-component-initialized']/span/span[4]")).getText());
-		
+
+		Assert.assertEquals(b.findElement(By.xpath(
+				"//button[@class='trigger-utility menu-trigger btn-utility btn-secondary dropdown-toggle theme-standard pin-left menu-arrow gcw-component gcw-traveler-amount-select gcw-component-initialized']/span/span[4]"))
+				.getText(), "3 Adults");
+
+		System.out.println(b.findElement(By.xpath(
+				"//button[@class='trigger-utility menu-trigger btn-utility btn-secondary dropdown-toggle theme-standard pin-left menu-arrow gcw-component gcw-traveler-amount-select gcw-component-initialized']/span/span[4]"))
+				.getText());
+
 		/*
-		int i=1;
-		while(i<6) 
-			{
-			
-		b.findElement(By.xpath("//div[@class='uitk-grid step-input-outside gcw-component gcw-component-step-input gcw-step-input gcw-component-initialized']/div[4]/button")).click();
-		i++;
-			}*/
-		WebElement origin= b.findElement(By.id("flight-origin-flp"));
+		 * int i=1; while(i<6) {
+		 * 
+		 * b.findElement(By.
+		 * xpath("//div[@class='uitk-grid step-input-outside gcw-component gcw-component-step-input gcw-step-input gcw-component-initialized']/div[4]/button"
+		 * )).click(); i++; }
+		 */
+		WebElement origin = b.findElement(By.id("flight-origin-flp"));
 		origin.clear();
 		origin.sendKeys("orl");
 		Thread.sleep(2000);
-		for (int c=1; c<4; c++) 
-		{
-		origin.sendKeys(Keys.ARROW_DOWN);
+		for (int c = 1; c < 1; c++) {
+			origin.sendKeys(Keys.ARROW_DOWN);
 		}
 		origin.sendKeys(Keys.ENTER);
-		
+
 		WebElement desti = b.findElement(By.id("flight-destination-flp"));
 		desti.clear();
+		Thread.sleep(2000);
 		desti.sendKeys("IAH");
 		Thread.sleep(2000);
 		desti.sendKeys(Keys.ENTER);
-		//count no of checkboxes=
-System.out.println("Number of checkboxes- " + b.findElements(By.cssSelector("[type='checkbox']")).size()); 	
+		// count no of checkboxes=
+		System.out.println("Number of checkboxes- " + b.findElements(By.cssSelector("[type='checkbox']")).size());
 //to check if 1 particular checkbox is selected or no	System.out.println(b.findElement(By.cssSelector("[id*='flight-add-hotel']")).isSelected());	
 
 //to select a check box
-b.findElement(By.cssSelector("[id*='flight-add-hotel']")).click();
+		b.findElement(By.cssSelector("[id*='flight-add-hotel']")).click();
 //TestNg is a framework used to assert if certain conditions are true or false
-Assert.assertTrue(b.findElement(By.cssSelector("[id*='flight-add-hotel']")).isSelected());
-Assert.assertFalse(b.findElement(By.cssSelector("[id*='flight-add-car']")).isSelected());
-Thread.sleep(2000);
-b.findElement(By.cssSelector("[id*='flight-add-hotel']")).click();
+		Assert.assertTrue(b.findElement(By.cssSelector("[id*='flight-add-hotel']")).isSelected());
+		Assert.assertFalse(b.findElement(By.cssSelector("[id*='flight-add-car']")).isSelected());
+		Thread.sleep(2000);
+		b.findElement(By.cssSelector("[id*='flight-add-hotel']")).click();
 
-if(b.findElement(By.cssSelector("#flight-returning-wrapper-flp")).isDisplayed())
-{
-	System.out.println("return date is displaying");
-	Assert.assertTrue(true);
-}
-else {
-	Assert.assertTrue(false);
-	
-}
-b.findElement(By.cssSelector("#flight-type-one-way-label-flp")).click();
+		if (b.findElement(By.cssSelector("#flight-returning-wrapper-flp")).isDisplayed()) {
+			System.out.println("return date is displaying");
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertTrue(false);
 
-if(b.findElement(By.cssSelector("#flight-returning-wrapper-flp")).isDisplayed())
-{
-	
-	Assert.assertFalse(true);
-	
-}
-else {
-	Assert.assertFalse(false);
-	System.out.println("Not displayed now after one way");
-	
-}
-		
+		}
+		b.findElement(By.cssSelector("#flight-type-one-way-label-flp")).click();
+
+		if (b.findElement(By.cssSelector("#flight-returning-wrapper-flp")).isDisplayed()) {
+
+			Assert.assertFalse(true);
+
+		} else {
+			Assert.assertFalse(false);
+			System.out.println("Not displayed now after one way");
+
+		}
+b.findElement(By.id("flight-departing-single-flp")).click();
+//Thread.sleep(2000);
+b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).click();
+//b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).sendKeys(Keys.ENTER);
+//b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).s
+b.findElement(By.xpath("//*[@class='btn-primary btn-action gcw-submit']")).click();
+
+WebDriverWait expl = new WebDriverWait(b,20);
+expl.until(ExpectedConditions.visibilityOfElementLocated(By.id("stopFilter_stops-0")));
+b.findElement(By.id("stopFilter_stops-0")).click();
 	}
-
 }
