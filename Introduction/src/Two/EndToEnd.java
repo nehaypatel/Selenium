@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Endtoend {
@@ -23,7 +25,7 @@ public class Endtoend {
 		System.setProperty("webdriver.chrome.driver",
 				"E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize(); 
 		driver.manage().deleteAllCookies();
 		 getScreenshot(driver);
@@ -37,9 +39,9 @@ public class Endtoend {
 		Assert.assertFalse(driver.findElement(By.id("departureDate")).isEnabled(), "false");
 		Assert.assertFalse(driver.findElement(By.id("returnDate")).isEnabled(), "false");
 		driver.findElement(By.id("rboneway")).click();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		driver.findElement(By.id("kendoDepartFrom_input")).click();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		WebElement dd = driver.findElement(By.xpath("//ul[@id='kendoDepartFrom_listbox']/li[1]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", dd);
@@ -49,15 +51,21 @@ public class Endtoend {
 		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("#departureDate")).click();
 		driver.findElement(By.cssSelector(".ui-state-default.ui-state-active")).click();
-		Thread.sleep(500);
-		WebElement passenger = driver.findElement(By.xpath("//body[@class='page-home']/div[@class='wrap-all-the-things container']/header[@id='js-hero-vid']/div[@class='main-head__inner']/div[@class='booking-widget']/div[@class='transformer-tabs__wrap']/div[@id='findFlights']/div[@class='passengers']/fieldset/div[@class='divPassengers']/div[1]/span[1]"));
-		passenger.click();
-		passenger.sendKeys(Keys.ARROW_DOWN);
-		passenger.sendKeys(Keys.ENTER);
+		WebDriverWait d = new WebDriverWait(driver, 30);
+		d.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ui-state-default.ui-state-active")));
+		driver.findElement(By.cssSelector("#passengersInput")).click();
+		driver.findElement(By.xpath("//img[@class='add-adult']")).click();
+		driver.findElement(By.xpath("//div[@class='invisible-click-handler-input']")).click();
+		//WebElement passenger = driver.findElement(By.xpath("//body[@class='page-home']/div[@class='wrap-all-the-things container']/header[@id='js-hero-vid']/div[@class='main-head__inner']/div[@class='booking-widget']/div[@class='transformer-tabs__wrap']/div[@id='findFlights']/div[@class='passengers']/fieldset/div[@class='divPassengers']/div[1]/span[1]"));
+	//	passenger.click();
+		//passenger.sendKeys(Keys.ARROW_DOWN);
+		//passenger.sendKeys(Keys.ENTER);
+	
 		driver.findElement(By.xpath("//a[@id='btnSearch']")).click();
-		// driver.findElement(By.cssSelector("div[class=divPassengers]+div+span+span")).click();
 
+	
 	}
+	
 
   public static void getScreenshot(WebDriver driver) throws IOException
   {

@@ -6,9 +6,16 @@ IMPLICIT WAIT
 	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 EXPLICIT WAIT
+- it is conditional 
 - It is for indivuadl CODE where we know the results could take time to load. case by case basis
 -It keeps on listening to Dom even during the wait time
-- if the step is fulfilled before the wait time, it will move to next line of code 
+- if the step is fulfilled before the wait time, it will move to next line of code
+ 
+WebDriverWait results = new WebDriverWait(driver, 20);
+//results.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("results")));
+results.until(ExpectedConditions.elementToBeClickable(By.id("results")));
+System.out.println(driver.findElement(By.id("results")).getText());
+		
 
 Thread.Sleep- this is a java code
 it waits for the no of time asked to wait n then listen to the Dom
