@@ -1,0 +1,31 @@
+package Two;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class assignment3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver",
+				"E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://www.qaclickacademy.com/practice.php");
+		driver.findElement(By.id("checkBoxOption2")).click();
+		//String sel =driver.findElement(By.xpath("//*[@id='checkbox-example']/fieldset/label[2]")).getText();
+	String sel = driver.findElement(By.id("checkBoxOption2")).getText();
+	WebElement drop = driver.findElement(By.id("dropdown-class-example"));
+	Select opt = new Select(drop);
+		opt.selectByVisibleText(sel);
+	driver.findElement(By.id("name")).sendKeys(sel);	
+	driver.findElement(By.id("alertbtn")).click();
+	
+		}
+
+	}
+
+

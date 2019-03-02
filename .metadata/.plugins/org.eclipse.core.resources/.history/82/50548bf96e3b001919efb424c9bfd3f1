@@ -1,0 +1,24 @@
+package Two;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LinksCount {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver",
+				"E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.qaclickacademy.com/practice.php");
+		System.out.println(driver.findElements(By.tagName("a")).size());
+		// limiting the scope of webdriver
+		WebElement footerdriver = driver.findElement(By.id("gf-BIG"));
+		System.out.println(footerdriver.findElements(By.tagName("a")).size());
+		WebElement element1 = driver.findElement(By.xpath("//div[@id='gf-BIG']/table/tr/td/ul"));
+		System.out.println(element1.findElements(By.tagName("a")).size());
+	}
+
+}

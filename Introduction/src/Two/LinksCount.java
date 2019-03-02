@@ -1,0 +1,54 @@
+package Two;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LinksCount {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver",
+				"E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.qaclickacademy.com/practice.php");
+		//1. get all links on a page
+		System.out.println(driver.findElements(By.tagName("a")).size());
+		//2 limiting the scope of webdriver
+		WebElement footerdriver = driver.findElement(By.id("gf-BIG"));
+		System.out.println(footerdriver.findElements(By.tagName("a")).size());
+		//3 get the xpath
+		WebElement element1 = driver.findElement(By.xpath("//div[@id='gf-BIG']//table//tr//td[1]//ul"));
+		System.out.println(element1.findElements(By.tagName("a")).size());
+		//4. click on each link on the column and check links are not broken
+		for (int i=1; i<element1.findElements(By.tagName("a")).size(); i++)
+		{
+			String opentab= Keys.chord(Keys.CONTROL,Keys.ENTER);
+			element1.findElements(By.tagName("a")).get(i).sendKeys(opentab);
+			Thread.sleep(5000L);
+		}
+			//5. to get the title of each tab
+			// we get the window handlers and set them as string
+			// we set an iterator
+			// we set a while loop to keep moving from one index to another
+			// hasnext tells us whether next index is present or not
+			//next will make it move to next index
+			Set<String> abc= driver.getWindowHandles();
+			Iterator<String> tab =abc.iterator();
+		
+			while(tab.hasNext())
+			{
+				driver.switchTo().window(tab.next());
+				System.out.println(driver.getTitle());
+			}
+		
+		}
+		}
+	
+
+

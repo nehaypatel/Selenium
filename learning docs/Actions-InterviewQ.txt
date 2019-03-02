@@ -1,0 +1,18 @@
+1.where we use actions class?
+if we want mouse movements, we use actions class
+first u create a new action 
+we find WEbElement
+then we use actions ending with build().perform()
+e.g moveToElement, doubleClick, contextClick()
+
+2. how do u handle multiple windows in s webdriver
+-by default, s will only understand the parent window open
+- command is
+driver.getWindowHandles();
+driver.switchTo().window();
+
+3. frames
+find element by 2 ways- iframe, frameset
+driver.switchTo().frame(0); // either by index or by id
+perform the actions
+driver.swithcTo().defaultContent();

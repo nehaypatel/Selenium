@@ -1,0 +1,33 @@
+package Two;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LinksCount {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver",
+				"E:\\Data\\Cloud\\OneDrive - hk sar baomin inc\\Selenium\\Drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.qaclickacademy.com/practice.php");
+		System.out.println(driver.findElements(By.tagName("a")).size());
+		// limiting the scope of webdriver
+		WebElement footerdriver = driver.findElement(By.id("gf-BIG"));
+		System.out.println(footerdriver.findElements(By.tagName("a")).size());
+		WebElement element1 = driver.findElement(By.xpath("//div[@id='gf-BIG']//table//tr//td[1]//ul"));
+		System.out.println(element1.findElements(By.tagName("a")).size());
+		//4. click on each link on the column and check links are not broken
+		for (int i=1; i<element1.findElements(By.tagName("a")).size(); i++)
+		{
+			String opentab= Keys.chord(Keys.CONTROL,Keys.ENTER);
+			element1.findElement(By.tagName("a")).get(i).sendKeys(opentab);
+			
+		}
+		}
+	}
+
+

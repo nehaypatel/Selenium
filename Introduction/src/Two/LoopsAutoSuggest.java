@@ -92,7 +92,8 @@ public class Loopsautosuggest {
 		}
 b.findElement(By.id("flight-departing-single-flp")).click();
 //Thread.sleep(2000);
-b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).click();
+b.findElement(By.xpath("//*[@class='datepicker-cal-date']")).click();
+//b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).click();
 //b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).sendKeys(Keys.ENTER);
 //b.findElement(By.xpath("//div[@class='datepicker-cal']//div[2]//table[1]//tbody[1]//tr[4]//td[3]//button[1]")).s
 b.findElement(By.xpath("//*[@class='btn-primary btn-action gcw-submit']")).click();
